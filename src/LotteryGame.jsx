@@ -2,13 +2,13 @@ import { useState } from "react";
 import { generateNewTicket , sum } from "./helper";
 import Ticket from "../Ticket";
 
-export default function LotteryGame({n , winningSum}){
+export default function LotteryGame({n , winCondition}){
     let [newTicket, setNewTicket] = useState(generateNewTicket(3)); 
     // let isWinning = false;
     // if (sum(newTicket) === 15) {
     //     isWinning = true;
     // }
-    let isWinning = sum(newTicket) === winningSum;
+    let isWinning = winCondition(newTicket);
     // console.log(newTicket);
 
     let buyTicket = ()=>{
@@ -20,7 +20,8 @@ export default function LotteryGame({n , winningSum}){
             <h3>lottery ticket number</h3>
             <Ticket ticket={newTicket} />
             <div>
-                <button onClick={buyTicket}> new Ticket </button>
+                <button onClick={buyTicket}> new Ticket </button> {/*if u want u can also use button as component*/}
+
             </div>
             
 
